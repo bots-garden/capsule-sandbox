@@ -1,0 +1,11 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Cobalt2",
+  "terminal.integrated.fontSize": 16,
+  "editor.fontSize": 15,
+  "go.useLanguageServer": true,
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "go.lintTool": "revive"
+}
