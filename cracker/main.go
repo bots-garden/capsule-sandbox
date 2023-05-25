@@ -15,7 +15,6 @@ import (
 	"github.com/tetratelabs/wazero"
 )
 
-
 var wasmFile []byte
 var runtime wazero.Runtime
 var ctx context.Context
@@ -57,16 +56,14 @@ func main() {
 		os.Exit(1)
 	}
 
-
-    // Registering the hello handler
-    http.HandleFunc("/", callWASMFunction)
+	// Registering the hello handler
+	http.HandleFunc("/", callWASMFunction)
 
 	fmt.Println("Cracker is listening on", httpPort)
 
-    // Listening on port 8080
-    http.ListenAndServe(":"+httpPort, nil)
+	// Listening on port 8080
+	http.ListenAndServe(":"+httpPort, nil)
 }
-
 
 // A handler for "/" route
 func callWASMFunction(w http.ResponseWriter, req *http.Request) {
@@ -81,12 +78,12 @@ func callWASMFunction(w http.ResponseWriter, req *http.Request) {
 	handleFunction := capsule.GetHandle(mod)
 	/* TODO: explain
 
-	*/
+	 */
 
-    body, err := ioutil.ReadAll(req.Body)
-    if err != nil {
-        fmt.Fprintf(w, err.Error()+"\n")
-    }
+	body, err := ioutil.ReadAll(req.Body)
+	if err != nil {
+		fmt.Fprintf(w, err.Error()+"\n")
+	}
 
 	result, err := capsule.CallHandleFunction(ctx, mod, handleFunction, body)
 
