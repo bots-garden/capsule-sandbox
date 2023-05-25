@@ -1,6 +1,6 @@
 {
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Gitpod Light",
+  "workbench.colorTheme": "GitHub Light Monochrome Focused",
   "terminal.integrated.fontSize": 16,
   "editor.fontSize": 16,
   "go.useLanguageServer": true,
