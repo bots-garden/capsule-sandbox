@@ -12,18 +12,9 @@ tasks:
       # -----------------------
       # Install GoLang
       # -----------------------
-      wget https://go.dev/dl/go${GOLANG_VERSION}.${GOLANG_OS}-${GOLANG_ARCH}.tar.gz
-
-      sudo rm -rf /usr/local/go 
-      sudo tar -C /usr/local -xzf go${GOLANG_VERSION}.${GOLANG_OS}-${GOLANG_ARCH}.tar.gz
-
-      echo "" >> ${HOME}/.bashrc
-      echo "export GOLANG_HOME=\"/usr/local/go\"" >> ${HOME}/.bashrc
-      echo "export PATH=\"\$GOLANG_HOME/bin:\$PATH\"" >> ${HOME}/.bashrc
-
-      source ${HOME}/.bashrc
-
-      rm go${GOLANG_VERSION}.${GOLANG_OS}-${GOLANG_ARCH}.tar.gz               
+      bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+      gvm install ${GOLANG_VERSION}
+      gvm use ${GOLANG_VERSION} [--default]        
 
       # -----------------------
       # Install TinyGo

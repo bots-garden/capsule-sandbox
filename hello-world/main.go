@@ -6,14 +6,12 @@ import (
 )
 
 func main() {
-    capsule.SetHandle(Handle)
+    
+    capsule.SetHandle(func(params []byte) ([]byte, error) {
+        // Display the content of `params`
+        capsule.Print("📝 module parameter(s): " + string(params))
+
+        return []byte("👋 Hello " + string(params)), nil
+    })
 }
 
-// Handle function
-func Handle(params []byte) ([]byte, error) {
-	
-    // Display the content of `params`
-    capsule.Print("📝 module parameter(s): " + string(params))
-
-    return []byte("👋 Hello " + string(params)), nil
-}
