@@ -1,8 +1,8 @@
 {
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Cobalt2",
-  "terminal.integrated.fontSize": 16,
-  "editor.fontSize": 15,
+  "workbench.colorTheme": "Tomorrow Night Blue",
+  "terminal.integrated.fontSize": 18,
+  "editor.fontSize": 18,
   "go.useLanguageServer": true,
   "terminal.integrated.defaultProfile.linux": "bash",
   "files.autoSave": "afterDelay",

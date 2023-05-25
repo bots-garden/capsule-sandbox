@@ -24,6 +24,7 @@ tasks:
       rm tinygo_${TINYGO_VERSION}_${TINYGO_ARCH}.deb
     init: |
       echo "🚀 initialize..."
+      go install -v github.com/mgechev/revive@v1.2.3
 
 ports:
   - port: 8080
