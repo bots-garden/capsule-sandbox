@@ -1,3 +1,45 @@
-image:
-  file: .gitpod.dockerfile
+image: gitpod/workspace-full
 
+tasks:
+  - name: initialize
+    before: |
+      echo "🚀 before..."
+      GOLANG_VERSION="1.20"
+      GOLANG_OS="linux"
+      GOLANG_ARCH="amd64"
+      TINYGO_VERSION="0.27.0"
+      TINYGO_ARCH="amd64"
+      # -----------------------
+      # Install GoLang
+      # -----------------------
+      wget https://go.dev/dl/go${GOLANG_VERSION}.${GOLANG_OS}-${GOLANG_ARCH}.tar.gz
+
+      sudo rm -rf /usr/local/go 
+      sudo tar -C /usr/local -xzf go${GOLANG_VERSION}.${GOLANG_OS}-${GOLANG_ARCH}.tar.gz
+
+      echo "" >> ${HOME}/.bashrc
+      echo "export GOLANG_HOME=\"/usr/local/go\"" >> ${HOME}/.bashrc
+      echo "export PATH=\"\$GOLANG_HOME/bin:\$PATH\"" >> ${HOME}/.bashrc
+
+      source ${HOME}/.bashrc
+
+      rm go${GOLANG_VERSION}.${GOLANG_OS}-${GOLANG_ARCH}.tar.gz               
+
+      # -----------------------
+      # Install TinyGo
+      # -----------------------
+      wget https://github.com/tinygo-org/tinygo/releases/download/v${TINYGO_VERSION}/tinygo_${TINYGO_VERSION}_${TINYGO_ARCH}.deb
+      sudo dpkg -i tinygo_${TINYGO_VERSION}_${TINYGO_ARCH}.deb
+      rm tinygo_${TINYGO_VERSION}_${TINYGO_ARCH}.deb
+    init: |
+      echo "🚀 initialize..."
+
+ports:
+  - port: 8080
+    visibility: public
+
+vscode:
+  extensions:
+    - golang.go
+    - pkief.material-icon-theme
+    - aaron-bond.better-comments
